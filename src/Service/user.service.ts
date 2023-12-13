@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AddUserDto, UpdateUserDto } from '../Dto/user.dto';
-import { UserRepository } from 'src/Repository/user.repository';
+import { UserRepository } from '../Repository/user.repository';
 
 @Injectable()
 export class UserService {
@@ -27,6 +27,6 @@ export class UserService {
   }
 
   deleteUser(id: string) {
-    return id;
+    return this.userRepository.deleteOne(id);
   }
 }

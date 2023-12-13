@@ -29,10 +29,10 @@ export class UserController {
     return this.userService.addUser(user);
   }
 
-  // @Post()
-  // addManyUser(@Body() listUser: AddUserDto[]) {
-  //   return this.userService.addManyUser(listUser);
-  // }
+  @Post('/insert-many')
+  addManyUser(@Body() payload: { listUser: AddUserDto[] }) {
+    return this.userService.addManyUser(payload.listUser);
+  }
 
   @Patch()
   updateUser(@Body() user: UpdateUserDto) {
@@ -40,7 +40,15 @@ export class UserController {
   }
 
   @Delete()
-  deleteUser(@Body() id: string) {
-    return this.userService.deleteUser(id);
+  deleteUser(@Body() payload: { id: string }) {
+    if (!payload.id) {
+      return {
+        errors: {
+          message: 'Id is required field',
+        },
+      };
+    }
+
+    return this.userService.deleteUser(payload.id);
   }
 }
