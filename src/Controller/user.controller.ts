@@ -29,7 +29,7 @@ export class UserController {
     return this.userService.addUser(user);
   }
 
-  @Post('/insert-many')
+  @Post('/insert-many/')
   addManyUser(@Body() payload: { listUser: AddUserDto[] }) {
     return this.userService.addManyUser(payload.listUser);
   }
