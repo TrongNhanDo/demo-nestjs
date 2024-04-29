@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Model, FilterQuery, QueryOptions, Document } from 'mongoose';
 
 export class BaseRepository<T extends Document> {
